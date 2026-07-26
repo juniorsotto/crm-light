@@ -1,0 +1,96 @@
+/* ---------- Card ---------- */
+.card {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+.cardPad { padding: var(--space-4); }
+
+/* ---------- Badge ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 9px;
+  border-radius: var(--radius-full);
+  font-size: var(--fs-12);
+  font-weight: var(--fw-semibold);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.toneNeutral { background: var(--bg-hover); color: var(--fg-2); }
+.toneInfo    { background: var(--bg-blue-soft); color: var(--fg-link); }
+.toneSuccess { background: var(--bg-success-soft); color: var(--fg-brand); }
+.toneWarn    { background: var(--bg-warning-soft); color: #B4780A; }
+.toneDanger  { background: var(--bg-danger-soft); color: var(--danger); }
+.toneViolet  { background: var(--bg-violet-soft); color: var(--violet); }
+
+/* ---------- Chip (stage / status) ---------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: var(--fs-12);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-snug);
+  white-space: nowrap;
+}
+.chipDot {
+  width: 7px; height: 7px; border-radius: 50%;
+  flex: none;
+}
+.chipPulse { animation: chip-pulse 1.5s var(--ease-out) infinite; }
+@keyframes chip-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ---------- Avatar ---------- */
+.avatar {
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-dark));
+  color: #fff;
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-snug);
+  flex: none;
+  user-select: none;
+}
+
+/* ---------- Toast ---------- */
+.toastWrap {
+  position: fixed;
+  bottom: var(--space-6);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: center;
+  pointer-events: none;
+}
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  background: var(--bg-inverse);
+  color: var(--fg-inverse);
+  font-size: var(--fs-14);
+  font-weight: var(--fw-semibold);
+  box-shadow: var(--shadow-lift);
+  animation: toast-in var(--dur-base) var(--ease-out);
+}
+.toastError { background: var(--danger); color: #fff; }
+.toastSuccess { background: var(--success); color: #fff; }
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}

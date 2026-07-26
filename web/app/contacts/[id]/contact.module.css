@@ -1,0 +1,339 @@
+.page {
+  height: calc(100vh - 52px);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.backRow {
+  padding: var(--space-4) var(--space-6) 0;
+}
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-13);
+  font-weight: var(--fw-semibold);
+  color: var(--fg-3);
+}
+.backLink:hover { color: var(--fg-1); text-decoration: none; }
+
+/* ---------- Contact header ---------- */
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6) var(--space-5);
+  border-bottom: 1px solid var(--border);
+}
+.headerInfo { min-width: 0; flex: 1; }
+.headerName {
+  font-size: var(--fs-24);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-tight);
+  color: var(--fg-1);
+  margin: 0 0 4px;
+  line-height: 1.1;
+}
+.headerMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--fs-13);
+  color: var(--fg-3);
+}
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: var(--fw-medium);
+}
+.metaMono { font-family: var(--font-mono); }
+.headerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-2);
+  text-align: right;
+}
+.headerAmount {
+  font-size: var(--fs-20);
+  font-weight: var(--fw-bold);
+  color: var(--fg-1);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Body: timeline + right panel ---------- */
+.body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 0;
+}
+.timelineCol {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+}
+.sideCol {
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--space-5);
+  background: var(--bg-subtle);
+}
+
+@media (max-width: 860px) {
+  .body { grid-template-columns: 1fr; }
+  .sideCol { display: none; }
+}
+
+/* ---------- Timeline ---------- */
+.tlHead {
+  padding: var(--space-4) var(--space-6) var(--space-2);
+}
+.tlHeadTitle {
+  font-size: var(--fs-12);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+  color: var(--fg-3);
+}
+.tlScroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--space-3) var(--space-6) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.tlEmpty {
+  margin: auto;
+  color: var(--fg-4);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-medium);
+}
+
+/* timeline item generic */
+.item {
+  display: flex;
+  gap: var(--space-3);
+}
+.itemTime {
+  font-size: var(--fs-11);
+  color: var(--fg-4);
+  font-weight: var(--fw-medium);
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+/* bubbles */
+.bubbleRow { display: flex; }
+.bubbleRowOut { justify-content: flex-end; }
+.bubble {
+  max-width: 74%;
+  padding: 8px 12px;
+  border-radius: 14px;
+  font-size: var(--fs-14);
+  line-height: 1.45;
+  box-shadow: var(--shadow-soft);
+}
+.bubbleIn {
+  background: var(--bg-elev-1);
+  color: var(--fg-1);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 4px;
+}
+.bubbleOut {
+  /* local override: bg-brand (strong blue) + dark text had bad contrast — use the soft brand-blue tint instead */
+  background: var(--bg-blue-soft);
+  color: var(--fg-1);
+  border: 1px solid var(--brand-blue-glow);
+  border-bottom-right-radius: 4px;
+}
+.bubbleMeta {
+  display: block;
+  margin-top: 3px;
+  font-size: var(--fs-11);
+  opacity: 0.7;
+  font-weight: var(--fw-medium);
+}
+
+/* system / event line */
+.sysLine {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-content: center;
+  color: var(--fg-3);
+  font-size: var(--fs-12);
+  font-weight: var(--fw-medium);
+}
+.sysLine.tenue { color: var(--fg-4); opacity: 0.85; }
+.sysIcon {
+  width: 22px; height: 22px; flex: none;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--bg-hover);
+  color: var(--fg-3);
+  font-size: 12px;
+}
+.sysAccent { font-weight: var(--fw-bold); }
+
+/* event card (note / task / quote) */
+.evCard {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+}
+.evCardAccent { border-left: 3px solid var(--brand-blue); }
+.evIcon {
+  width: 30px; height: 30px; flex: none;
+  border-radius: 8px;
+  display: grid; place-items: center;
+  font-size: 15px;
+}
+.evBody { min-width: 0; flex: 1; }
+.evTitle {
+  font-size: var(--fs-13);
+  font-weight: var(--fw-bold);
+  color: var(--fg-1);
+  margin-bottom: 2px;
+}
+.evText {
+  font-size: var(--fs-13);
+  color: var(--fg-2);
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.evTime {
+  font-size: var(--fs-11);
+  color: var(--fg-4);
+  font-weight: var(--fw-medium);
+  margin-top: 4px;
+}
+
+/* call chip */
+.callChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  background: var(--bg-blue-soft);
+  color: var(--fg-link);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-semibold);
+  margin: 0 auto;
+}
+
+/* ---------- Note composer ---------- */
+.composer {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-top: 1px solid var(--border);
+  background: var(--bg-elev-1);
+}
+.composerInput {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong);
+  background: var(--bg-subtle);
+  color: var(--fg-1);
+  font-size: var(--fs-14);
+  font-family: inherit;
+  outline: none;
+  transition: box-shadow var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.composerInput:focus {
+  border-color: var(--brand-blue);
+  box-shadow: var(--ring-focus);
+}
+.composerBtn {
+  padding: 0 18px;
+  border-radius: var(--radius-md);
+  border: 0;
+  background: var(--bg-brand);
+  color: #fff;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-14);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.composerBtn:hover:not(:disabled) { background: var(--bg-brand-hover); }
+.composerBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Quote panel ---------- */
+.sideTitle {
+  font-size: var(--fs-12);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+  color: var(--fg-3);
+  margin: 0 0 var(--space-3);
+}
+.qList { display: flex; flex-direction: column; gap: var(--space-3); }
+.qCard {
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.qTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.qCode {
+  font-family: var(--font-mono);
+  font-size: var(--fs-12);
+  font-weight: var(--fw-bold);
+  color: var(--fg-2);
+}
+.qSupplier {
+  font-size: var(--fs-14);
+  font-weight: var(--fw-bold);
+  color: var(--fg-1);
+}
+.qRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+.qLabel { font-size: var(--fs-12); color: var(--fg-3); font-weight: var(--fw-medium); }
+.qPremium {
+  font-size: var(--fs-15);
+  font-weight: var(--fw-bold);
+  color: var(--fg-1);
+  font-variant-numeric: tabular-nums;
+}
+.qEmpty {
+  font-size: var(--fs-13);
+  color: var(--fg-4);
+  font-weight: var(--fw-medium);
+  padding: var(--space-4) 0;
+}
+
+.centerFull {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  color: var(--fg-3);
+  font-weight: var(--fw-medium);
+}
