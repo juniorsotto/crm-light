@@ -69,6 +69,11 @@ const T: Dict = {
   filter_category: { es: "Categoría", en: "Category" },
 
   kanban_title: { es: "Pipeline de oportunidades", en: "Opportunities pipeline" },
+  wa_cta_title: { es: "Escríbenos por WhatsApp", en: "Message us on WhatsApp" },
+  wa_cta_sub: {
+    es: "Escríbele a este WhatsApp y verás tu interacción entrar al pipe en vivo.",
+    en: "Message this WhatsApp and watch your interaction enter the pipe live.",
+  },
   kanban_empty: { es: "Sin oportunidades", en: "No opportunities" },
   kanban_loading: { es: "Cargando tablero…", en: "Loading board…" },
   col_count_one: { es: "oportunidad", en: "opportunity" },
