@@ -26,6 +26,34 @@
   font-weight: var(--fw-medium);
 }
 
+/* "How the propensity engine works" → opens the explainer artifact in a new tab */
+.engineLink {
+  margin-left: auto;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border-radius: var(--radius-full);
+  background: var(--bg-brand-soft);
+  color: var(--fg-brand);
+  font-size: var(--fs-13);
+  font-weight: var(--fw-bold);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background 150ms ease, border-color 150ms ease, transform 150ms ease;
+  white-space: nowrap;
+}
+.engineLink:hover {
+  background: var(--brand-blue);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.engineLink:focus-visible {
+  outline: none;
+  border-color: var(--brand-blue);
+}
+
 /* controls row: category filter (left) + search (right) */
 .controls {
   display: flex;
