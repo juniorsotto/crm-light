@@ -54,6 +54,33 @@
   border-color: var(--brand-blue);
 }
 
+/* "Pitch deck" badge → opens the deck artifact (public) in a new tab. Yellow accent to distinguish. */
+.pitchLink {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border-radius: var(--radius-full);
+  background: var(--brand-yellow-soft);
+  color: #7a5c00;
+  font-size: var(--fs-13);
+  font-weight: var(--fw-bold);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background 150ms ease, border-color 150ms ease, transform 150ms ease;
+  white-space: nowrap;
+}
+.pitchLink:hover {
+  background: var(--brand-yellow);
+  color: var(--brand-graphite);
+  transform: translateY(-1px);
+}
+.pitchLink:focus-visible {
+  outline: none;
+  border-color: var(--brand-yellow-dark);
+}
+
 /* controls row: category filter (left) + search (right) */
 .controls {
   display: flex;

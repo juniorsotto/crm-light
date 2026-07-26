@@ -21,6 +21,7 @@ const T: Dict = {
   },
   leads_loading: { es: "Cargando leads…", en: "Loading leads…" },
   engine_how_link: { es: "¿Cómo funciona el motor?", en: "How the engine works" },
+  pitch_deck_link: { es: "Pitch deck", en: "Pitch deck" },
   leads_empty: { es: "Sin leads etiquetados todavía", en: "No tagged leads yet" },
   leads_empty_filtered: {
     es: "Ningún lead en esta categoría",
