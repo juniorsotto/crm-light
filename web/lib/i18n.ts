@@ -31,6 +31,19 @@ const T: Dict = {
   },
   lead_one: { es: "lead", en: "lead" },
   lead_many: { es: "leads", en: "leads" },
+
+  // propensity-engine band (decorative)
+  pe_status: {
+    es: "Motor de propensión · procesando",
+    en: "Propensity engine · processing",
+  },
+  src_credits: { es: "Créditos", en: "Credit" },
+  src_pharmacy: { es: "Farmacias", en: "Pharmacy" },
+  src_housing: { es: "Vivienda", en: "Housing" },
+  src_ips: { es: "IPS", en: "IPS" },
+  src_piscilago: { es: "Piscilago", en: "Piscilago" },
+  src_hotels: { es: "Hoteles", en: "Hotels" },
+  src_etc: { es: "y más", en: "and more" },
   suggested: { es: "Sugerido", en: "Suggested" },
   th_lead: { es: "Lead", en: "Lead" },
   th_phone: { es: "Teléfono", en: "Phone" },

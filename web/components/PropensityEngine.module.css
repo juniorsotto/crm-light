@@ -1,0 +1,204 @@
+/* Propensity Engine — decorative "ML motor" band shown above the leads list.
+   Meshing gears = the machine-learning motor; source chips (other Colsubsidio
+   products) flow in; lead particles drop out toward the list below.
+   Brand: Colsubsidio blue primary, yellow accent. Theme-aware via tokens.
+   Motion is opt-in under prefers-reduced-motion:no-preference so the reduced
+   state is a legible, static picture of the same concept. */
+
+.band {
+  position: relative;
+  flex: none;
+  margin: 0 var(--space-5) var(--space-3);
+  height: clamp(96px, 13vh, 132px);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  user-select: none;
+  background:
+    radial-gradient(90% 120% at 90% 120%, var(--brand-yellow-glow), transparent 55%),
+    radial-gradient(120% 150% at 4% -20%, var(--brand-blue-glow), transparent 60%),
+    linear-gradient(90deg, var(--bg-brand-soft), var(--bg-subtle) 72%);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ---- caption / status overline ---- */
+.caption {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-4);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--fs-11);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-snug);
+  color: var(--fg-3);
+  pointer-events: none;
+}
+.captionDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand-blue);
+  box-shadow: 0 0 0 3px var(--brand-blue-glow);
+  flex: none;
+}
+
+/* ---- data sources lane (chips flow toward the motor) ---- */
+.sources {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  align-self: stretch;
+  overflow: hidden;
+  --flow-dist: clamp(110px, 22vw, 240px);
+}
+.srcChip {
+  position: absolute;
+  transform: translateX(0);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  color: var(--fg-2);
+  font-size: var(--fs-11);
+  font-weight: var(--fw-semibold);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.srcDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand-blue);
+  flex: none;
+}
+
+/* ---- the motor (gears housing) ---- */
+.engine {
+  position: relative;
+  flex: none;
+  width: clamp(92px, 15vw, 128px);
+  height: 82%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-elev-1);
+  box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  overflow: visible;
+}
+.engineSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.gear {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.gearBlue { fill: var(--brand-blue); }
+.gearBlue2 { fill: var(--bg-blue); }
+.gearYellow { fill: var(--brand-yellow-dark); }
+.hub { fill: var(--bg-elev-1); }
+
+/* ---- output: generated leads dropping toward the list ---- */
+.output {
+  position: relative;
+  flex: none;
+  width: clamp(76px, 13vw, 112px);
+  align-self: stretch;
+  overflow: hidden;
+  --fall-dist: clamp(46px, 8vh, 78px);
+}
+.outArrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--brand-blue);
+  opacity: 0.22;
+}
+.particle {
+  position: absolute;
+  top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  width: 52px;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elev-1);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  opacity: 0;
+  pointer-events: none;
+}
+.pAvatar {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand-blue), var(--brand-blue-dark));
+  flex: none;
+}
+.pLines {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.pLines span {
+  height: 3px;
+  border-radius: 2px;
+  background: var(--border-strong);
+}
+.pLines span:first-child { width: 100%; }
+.pLines span:last-child { width: 62%; }
+
+/* ---- motion (opt-in; static & concept-legible when reduced) ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .gear.spinCw  { animation: pe-spin     9s linear infinite; }
+  .gear.spinCcw { animation: pe-spin-rev 9s linear infinite; }
+  .captionDot   { animation: pe-pulse 1.6s var(--ease-out) infinite; }
+  .srcChip      { animation: pe-flow 6s var(--ease-in-out) infinite both; }
+  .particle     { animation: pe-fall 4.4s var(--ease-in-out) infinite both; }
+}
+
+@keyframes pe-spin     { to { transform: rotate(360deg); } }
+@keyframes pe-spin-rev { to { transform: rotate(-360deg); } }
+@keyframes pe-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.35; }
+}
+@keyframes pe-flow {
+  0%   { transform: translateX(0);                opacity: 0; }
+  14%  { opacity: 1; }
+  76%  { opacity: 1; }
+  100% { transform: translateX(var(--flow-dist)); opacity: 0; }
+}
+@keyframes pe-fall {
+  0%   { transform: translateY(-6px) scale(0.92);            opacity: 0; }
+  20%  { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { transform: translateY(var(--fall-dist)) scale(0.9); opacity: 0; }
+}
+
+/* ---- responsive: collapse gracefully, never scroll horizontally ---- */
+@media (max-width: 720px) {
+  .band { height: clamp(88px, 16vw, 112px); }
+  .srcChip:nth-child(n + 6) { display: none; }
+}
+@media (max-width: 520px) {
+  .output { display: none; }
+  .srcChip:nth-child(n + 4) { display: none; }
+}

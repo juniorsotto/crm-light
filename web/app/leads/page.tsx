@@ -3,6 +3,7 @@
 import styles from "./leads.module.css";
 import { AppHeader } from "@/components/AppHeader";
 import { LeadsList } from "@/components/LeadsList";
+import { PropensityEngine } from "@/components/PropensityEngine";
 import { useApp } from "@/components/AppContext";
 
 export default function LeadsPage() {
@@ -15,6 +16,7 @@ export default function LeadsPage() {
           <h1 className={styles.pageTitle}>{t("leads_title")}</h1>
           <span className={styles.pageSub}>{t("leads_sub")}</span>
         </div>
+        <PropensityEngine />
         <LeadsList />
       </div>
     </>
