@@ -1,0 +1,456 @@
+/* ============================================================
+   Motor de propension - Cascada 360 (explainer page)
+   Ported from the standalone Colsubsidio artifact into a scoped
+   CSS Module. EVERYTHING is a module class or a tag selector
+   nested under one, so none of it leaks to the rest of the CRM.
+   The artifact's light palette is pinned as local custom
+   properties on .screen so the app's dark toggle never flips it.
+   ============================================================ */
+
+.screen {
+  /* fixed light palette (from the artifact) - does not follow app theme */
+  --blue: #0067B1;
+  --blue-dark: #00548F;
+  --blue-soft: #E4EFF7;
+  --ink-blue: #0B2942;
+  --yellow: #FFD000;
+  --yellow-dark: #E0B700;
+  --yellow-soft: #FFF6D1;
+  --n0: #FFFFFF;
+  --n25: #FBFCFD;
+  --n50: #F5F8FB;
+  --n100: #ECF1F6;
+  --n200: #DDE5EC;
+  --n300: #C5CFDA;
+  --fg1: #161C24;
+  --fg2: #49535E;
+  --fg3: #68737F;
+  --brd: #DDE5EC;
+  --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 10px 26px -14px rgba(15, 23, 42, 0.16);
+  --fdisplay: var(--font-display, "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif);
+  --fsans: var(--font-sans, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+
+  color-scheme: light;
+  height: calc(100vh - 52px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--n25);
+  color: var(--fg1);
+  font-family: var(--fsans);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 44px) clamp(16px, 4vw, 40px) 80px;
+}
+
+/* ---------- header ---------- */
+.top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 4px;
+}
+.mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: var(--blue);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow);
+  flex: none;
+}
+.mark span {
+  font-family: var(--fdisplay);
+  font-weight: 800;
+  color: var(--yellow);
+  font-size: 22px;
+  line-height: 1;
+}
+.brand {
+  font-family: var(--fdisplay);
+  font-weight: 700;
+  font-size: clamp(1rem, 2.4vw, 1.15rem);
+  letter-spacing: -0.01em;
+}
+.brand b {
+  color: var(--blue);
+}
+
+/* ---------- hero ---------- */
+.h1 {
+  font-family: var(--fdisplay);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  font-size: clamp(1.7rem, 5vw, 2.7rem);
+  margin: 16px 0 6px;
+  max-width: 22ch;
+}
+.hl {
+  background: linear-gradient(transparent 60%, var(--yellow) 60%);
+  padding: 0 3px;
+}
+.sub {
+  color: var(--fg2);
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  max-width: 58ch;
+  margin: 0 0 24px;
+}
+.sub b {
+  color: var(--fg1);
+}
+
+.thesis {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--n0);
+  border: 1px solid var(--brd);
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  margin: 0 0 38px;
+}
+.thesis::before {
+  content: "";
+  flex: none;
+  width: 4px;
+  align-self: stretch;
+  border-radius: 9999px;
+  background: var(--yellow);
+}
+.thesis p {
+  margin: 0;
+  font-size: clamp(0.95rem, 2.2vw, 1.06rem);
+  color: var(--fg1);
+  font-weight: 500;
+}
+.thesis b {
+  color: var(--blue-dark);
+}
+
+/* ---------- section scaffold ---------- */
+.section {
+  margin: 0 0 40px;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--fdisplay);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue-dark);
+  background: var(--blue-soft);
+  padding: 5px 12px;
+  border-radius: 9999px;
+}
+.eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--yellow);
+  box-shadow: 0 0 0 3px var(--yellow-soft);
+}
+.h2 {
+  font-family: var(--fdisplay);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.3rem, 3.4vw, 1.75rem);
+  margin: 12px 0 4px;
+}
+.lead {
+  color: var(--fg2);
+  margin: 0 0 16px;
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  max-width: 66ch;
+}
+
+/* ---------- glossary ---------- */
+.gloss {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.term {
+  background: var(--n0);
+  border: 1px solid var(--brd);
+  border-radius: 16px;
+  padding: 15px 16px;
+  box-shadow: var(--shadow);
+}
+.termT {
+  font-family: var(--fdisplay);
+  font-weight: 800;
+  font-size: 0.98rem;
+  color: var(--blue-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--blue);
+  border-radius: 7px;
+  padding: 2px 7px;
+  letter-spacing: 0.02em;
+}
+.term p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--fg2);
+  line-height: 1.5;
+}
+.term p b {
+  color: var(--fg1);
+}
+
+/* ---------- diagram card ---------- */
+.card {
+  background: var(--n0);
+  border: 1px solid var(--brd);
+  border-radius: 18px;
+  padding: clamp(14px, 2.5vw, 22px);
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+.mermaid {
+  margin: 0;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 6px 2px;
+}
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+/* The static SVGs carry no font-family, so their label boxes were sized by
+   mermaid-cli measuring text in system-ui. Pin the same family here (instead of
+   inheriting the app's Inter) so widths match and no node/cluster label clips. */
+.mermaid svg,
+.mermaid svg foreignObject div,
+.mermaid svg .nodeLabel,
+.mermaid svg p {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ---------- linked explanation bubbles ---------- */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+.bubble {
+  position: relative;
+  background: var(--n0);
+  border: 1px solid var(--brd);
+  border-radius: 16px;
+  padding: 16px 16px 15px;
+  box-shadow: var(--shadow);
+}
+.bubble::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 22px;
+  width: 13px;
+  height: 13px;
+  background: var(--n0);
+  border-left: 1px solid var(--brd);
+  border-top: 1px solid var(--brd);
+  transform: rotate(45deg);
+}
+.n {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--fdisplay);
+  font-weight: 800;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+.bubbleYellow .n {
+  background: var(--yellow-dark);
+}
+.bubble h4 {
+  font-family: var(--fdisplay);
+  font-weight: 800;
+  font-size: 0.98rem;
+  margin: 0 0 5px;
+  color: var(--fg1);
+}
+.bubble p {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--fg2);
+  line-height: 1.5;
+}
+.bubble p b {
+  color: var(--fg1);
+}
+
+/* ---------- life stages ---------- */
+.stages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+  gap: 10px;
+  margin-top: 6px;
+}
+.stage {
+  border: 1px solid var(--brd);
+  border-radius: 14px;
+  padding: 12px 14px;
+  background: var(--n0);
+  box-shadow: var(--shadow);
+}
+.stageId {
+  font-family: var(--fdisplay);
+  font-weight: 800;
+  color: #fff;
+  background: var(--blue);
+  border-radius: 7px;
+  padding: 1px 8px;
+  font-size: 0.8rem;
+  display: inline-block;
+}
+.stageNm {
+  font-weight: 800;
+  font-size: 0.94rem;
+  margin: 7px 0 2px;
+}
+.stageAge {
+  font-size: 0.76rem;
+  color: var(--blue-dark);
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.stageBd {
+  font-size: 0.8rem;
+  color: var(--fg2);
+  line-height: 1.4;
+}
+
+/* ---------- example cards ---------- */
+.egs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+.eg {
+  border: 1px solid var(--brd);
+  border-radius: 16px;
+  padding: 16px;
+  background: var(--n0);
+  box-shadow: var(--shadow);
+}
+.eg h3 {
+  font-family: var(--fdisplay);
+  font-weight: 800;
+  font-size: 1rem;
+  margin: 0 0 4px;
+}
+.cov {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--blue-dark);
+  background: var(--blue-soft);
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 9999px;
+  margin-bottom: 9px;
+}
+.eg ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.85rem;
+  color: var(--fg2);
+  line-height: 1.55;
+}
+.eg ul b {
+  color: var(--fg1);
+}
+
+/* ---------- habeas data callout ---------- */
+.habeas {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--blue-soft);
+  border: 1px solid #BFDCF0;
+  border-radius: 16px;
+  padding: 16px 18px;
+}
+.habeasIc {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--blue);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+.habeas p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-blue);
+  font-weight: 500;
+}
+.habeas b {
+  color: var(--blue-dark);
+}
+
+/* ---------- footer ---------- */
+.foot {
+  margin-top: 44px;
+  color: var(--fg3);
+  font-size: 0.82rem;
+  border-top: 1px solid var(--brd);
+  padding-top: 16px;
+}
+
+/* ---------- back link ---------- */
+.backRow {
+  margin-bottom: 10px;
+}
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--blue-dark);
+  background: var(--blue-soft);
+  border-radius: 9999px;
+  padding: 6px 13px 6px 10px;
+  text-decoration: none;
+  transition: background 150ms ease, transform 150ms ease;
+}
+.back:hover {
+  background: var(--blue);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
